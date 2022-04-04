@@ -4,6 +4,7 @@ window.addEventListener('load', function(){
     const form = document.querySelector("#new-task-form");
     const input = document.querySelector("#new-task-input");
     const list_el = document.querySelector("#tasks");
+    const submitButton = document.querySelector("#new-task-submit")
 
     form.addEventListener('submit', function(e){
         e.preventDefault();
@@ -53,13 +54,15 @@ window.addEventListener('load', function(){
         input.value = " ";
 
         task_edit_el.addEventListener('click', function(){
-            if (task_edit_el.innerText.toLowerCase() == "edit") {
-                task_input_el.removeAttribute("readonly");
-                task_input_el.focus();
-                task_edit_el.innerHTML = "Save";
+            if (task_edit_el.innerText.toLowerCase() === "edit") {
+                input.removeAttribute("readonly");
+                input.focus();
+                input.value = task;
+                submitButton.textContent = "Save";
+                
             } else {
-                task_input_el.setAttribute("readonly", "readonly");
-                task_edit_el.innerText = "Edit";
+                input.setAttribute("readonly", "readonly");
+                submitButton.textContent = "Edit";
             }
         });
 
